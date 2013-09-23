@@ -15,7 +15,7 @@ namespace BackgroundFetchSample
 		{
 			InvokeOnMainThread (() =>
 			{
-				this.labelTemp.Text = weatherInfo.GetTempInCelsius().ToString() + "°C";
+				this.labelTemp.Text = weatherInfo.GetTempInCelsius().ToString() + "°";
 				this.labelLocation.Text = weatherInfo.name;
 			});
 		}
