@@ -33,6 +33,12 @@ namespace BackgroundFetchSample
 		public int id { get; set; }
 		public string name { get; set; }
 		public int cod { get; set; }
+
+		public int GetTempInCelsius()
+		{
+			//main.temp is in kelvin
+			return (int)(main.temp - 273.15);
+		}
 	}
 }
 
