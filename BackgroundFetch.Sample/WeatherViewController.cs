@@ -15,19 +15,31 @@ namespace BackgroundFetchSample
 		{
 			InvokeOnMainThread (() =>
 			{
-				this.labelTemp.Text = weatherInfo.GetTempInCelsius().ToString();
+				this.labelTemp.Text = weatherInfo.GetTempInCelsius().ToString() + "°C";
 				this.labelLocation.Text = weatherInfo.name;
 			});
+		}
+
+		void LoadCachedWeather()
+		{
+			var weatherInfo = AppDelegate.GetCachedWeather ();
+
+			if (weatherInfo != null)
+				UpdateWeather (weatherInfo);
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+		
+			LoadCachedWeather ();
+		}
 
-			var weatherInfo = AppDelegate.GetCachedWeather ();
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
 
-			if (weatherInfo != null)
-				UpdateWeather (weatherInfo);
+			LoadCachedWeather ();
 		}
 	}
 }
